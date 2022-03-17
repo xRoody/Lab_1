@@ -52,7 +52,7 @@ public class Task {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", eventTime=" + eventTime +
-                person.getLogin()+
+                //person.getLogin()+
                 '}';
     }
 }
