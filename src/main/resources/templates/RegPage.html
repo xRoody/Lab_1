@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/registrationPage/reg.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<div class="login_div">
+    <h1>Registration</h1>
+    <form th:method="post" th:action="@{/registration}" class="registration_form" th:object="${personDto}">
+        <label class="login_label">
+            Login<input type="text" placeholder="Enter your username" name="login" class="login_input"
+                           th:field="*{login}">
+        </label>
+        <p th:attr="class='exception'" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></p>
+        <label class="login_label">
+            Username<input type="text" placeholder="Enter your username" name="username" class="login_input"
+                           th:field="*{username}">
+        </label>
+        <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'"  th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+        <label class="login_label">
+            Password<input type="password" placeholder="Enter your password" name="password" class="login_input"
+                           th:field="*{password}">
+        </label>
+        <p th:attr="class='exception'" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+        <label class="login_label">
+            Confirm password<input type="password" placeholder="Enter your password" name="r_password"
+                                   class="login_input" th:field="*{r_password}">
+        </label>
+        <p th:attr="class='exception'" th:if="${#fields.hasErrors('r_password')}" th:errors="*{r_password}"></p>
+        <label class="login_label">
+            Email<input type="text" placeholder="Enter your email" name="email" class="login_input" th:field="*{email}">
+        </label>
+        <p th:attr="class='exception'" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        <div class="button_div">
+            <div class="link_wrapper">
+                <span class="text_for_link">Already have an account?</span>
+                <a th:href="@{/login}" class="reg_link">Sign in</a>
+            </div>
+            <button type="submit" class="button_submit">Sign up</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -18,12 +18,16 @@ import com.example.lab_1.validationExceptions.UniqueEmailException;
 import com.example.lab_1.validationExceptions.UniqueLoginException;
 import com.example.lab_1.validationExceptions.UniqueNickNameException;
 import lombok.extern.log4j.Log4j2;
+import org.hibernate.Hibernate;
 import org.hibernate.exception.ConstraintViolationException;
+import org.hibernate.validator.HibernateValidator;
+import org.hibernate.validator.HibernateValidatorConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.Validation;
 import java.util.List;
 
 @SpringBootApplication

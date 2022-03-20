@@ -3,34 +3,27 @@ package com.example.lab_1.service;
 import com.example.lab_1.DTOs.PersonDTO;
 import com.example.lab_1.DTOs.TaskDTO;
 import com.example.lab_1.models.Person;
-import com.example.lab_1.models.Role;
 import com.example.lab_1.models.Task;
 import com.example.lab_1.repositpries.PersonRepo;
 import com.example.lab_1.repositpries.RoleRepo;
-import com.example.lab_1.repositpries.TaskRepo;
 import com.example.lab_1.validationExceptions.UniqueEmailException;
 import com.example.lab_1.validationExceptions.UniqueLoginException;
 import com.example.lab_1.validationExceptions.UniqueNickNameException;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Marker;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -47,9 +40,8 @@ public class PersonServiceImpl implements PersonService {
         return personRepo.save(person);
     }
 
-    public Person registerPerson(PersonDTO dto) throws UniqueLoginException, UniqueEmailException, UniqueNickNameException {
+    public Person registerPerson(PersonDTO dto){
         log.info("received person dto,try to register new person");
-        validateDto(dto);
         Person person = Person.builder()
                 .login(dto.getLogin())
                 .email(dto.getEmail())
@@ -61,19 +53,20 @@ public class PersonServiceImpl implements PersonService {
         return savePerson(person);
     }
 
-    private void validateDto(PersonDTO dto) throws UniqueLoginException, UniqueEmailException, UniqueNickNameException{
+    @Override
+    public void validateDto(PersonDTO dto) throws UniqueLoginException, UniqueEmailException, UniqueNickNameException{
         log.info("try to validate user data");
         if(getPerson(dto.getLogin())!=null){
             log.info("Login {} already exists", dto.getLogin());
             throw new UniqueLoginException("Login "+dto.getLogin()+" already exists");
         }
-        if(getByEmail(dto.getEmail())!=null){
-            log.info("Email {} already exists", dto.getEmail());
-            throw new UniqueEmailException("Email "+dto.getEmail()+" already exists");
-        }
         if(getByNickName(dto.getUsername())!=null){
             log.info("NickName {} already exists", dto.getUsername());
             throw new UniqueNickNameException("NickName "+dto.getUsername()+" already exists");
+        }
+        if(getByEmail(dto.getEmail())!=null){
+            log.info("Email {} already exists", dto.getEmail());
+            throw new UniqueEmailException("Email "+dto.getEmail()+" already exists");
         }
         log.info("validation complete");
     }

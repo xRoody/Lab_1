@@ -31,10 +31,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/static/**").authenticated()
+                .antMatchers("/registration").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").loginProcessingUrl("/processUser").permitAll()
+                .formLogin().loginPage("/login")
+                .loginProcessingUrl("/processUser").permitAll()
+                .defaultSuccessUrl("/", true).failureUrl("/login-error")
+                .permitAll()
                 .and()
                 .logout().permitAll();
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/**/**/*.css");
     }
 }
