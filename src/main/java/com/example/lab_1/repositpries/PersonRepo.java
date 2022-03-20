@@ -14,4 +14,6 @@ public interface PersonRepo extends JpaRepository<Person, Long> {
     Person findByLogin(String login);
     @Query("select p from Person p left join fetch p.tasks where p.login=:login")
     Person findByLoginWithTasks(@Param("login")String login);
+    Person findByEmail(String email);
+    Person findByNickName(String nickName);
 }

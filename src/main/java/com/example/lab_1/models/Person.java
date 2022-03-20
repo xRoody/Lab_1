@@ -11,6 +11,7 @@ import java.util.HashSet;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
