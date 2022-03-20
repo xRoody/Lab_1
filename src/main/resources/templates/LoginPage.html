@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/loginPage/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<div class="login_div">
+    <h1>Log in</h1>
+    <form th:method="post" th:action="@{/processUser}" class="login_form">
+        <label class="login_label">
+            Username<input type="text" placeholder="Enter your username" name="username" class="login_input">
+        </label>
+        <label class="login_label">
+            Password<input type="text" placeholder="Enter your password" name="password" class="login_input">
+        </label>
+        <div class="button_div">
+            <a th:href="@{/registration}" class="reg_link">Sign up</a>
+            <button type="submit" class="button_submit">Sign in</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
