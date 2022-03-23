@@ -30,14 +30,13 @@ public class RoleServiceImpl implements RoleService{
     }
 
     @Override
-    public void removeRole(Role role) {
-        log.info("remove role {}", role.getName());
-        roleRepo.delete(role);
+    public void removeRole(String roleName) { // Role/ name
+        log.info("remove role {}", roleName.toUpperCase());
+        roleRepo.removeByName(roleName);
     }
 
     @Override
     public List<Role> getAllRoles() {
-        log.info("fetch all roles");
         return roleRepo.findAll();
     }
 }

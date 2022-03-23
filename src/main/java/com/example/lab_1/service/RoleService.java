@@ -8,6 +8,6 @@ import java.util.Set;
 
 public interface RoleService{
     Role saveRole(RoleDTO role);
-    void removeRole(Role role);
+    void removeRole(String roleName);
     List<Role> getAllRoles();
 }

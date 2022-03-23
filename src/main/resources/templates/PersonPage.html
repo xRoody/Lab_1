@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/pers/persPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<header class="header">
+    <div class="dropdown" th:include="Moduls :: header(personNickName=${person.getNickName()}, personId=${person.getId()})"></div>
+</header>
+<body>
+    <div class="wrapper">
+        <h1 class="user_name" th:text="${person.getNickName()}">User name</h1>
+        <form autocomplete="off" th:method="post" class='form' id="update_form"  th:action="@{'/person/update/{id}'(id=${person.getId()})} " th:object="${person}">
+            <label class="login_label">
+                Username<input type="text" name="nickName" class="login_input" th:attr="autocomplete='off'"
+                               th:field="*{nickName}" th:placeholder="${person.getNickName()}">
+            </label>
+            <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'"  th:if="${#fields.hasErrors('nickName')}" th:errors="*{nickName}"></p>
+            <label class="login_label">
+                Email<input th:attr="autocomplete='off'" type="text" name="email" class="login_input" th:field="*{email}" th:placeholder="${person.getEmail()}">
+            </label>
+            <p th:attr="class='exception'" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            <label class="login_label">
+                New password<input th:attr="autocomplete='off'" type="password" placeholder="Enter your new password" name="r_password"
+                                       class="login_input" th:field="*{r_password}">
+            </label>
+            <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'" th:if="${#fields.hasErrors('r_password')}" th:errors="*{r_password}"></p>
+            <label class="login_label">
+                Old password<input th:attr="autocomplete='off'" type="password" placeholder="Enter your password" name="password" class="login_input"
+                               th:field="*{password}">
+            </label>
+            <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+        </form>
+        <div class="button_div" style="width: 50%">
+            <button type="submit" class="button_submit" form="update_form">Save</button>
+            <input type="submit" class="drop_down_button" form="update_form" style="margin: 0" th:formaction="@{'/person/delete/{id}'(id=${person.getId()})}" value="Delete account">
+        </div>
+    </div>
+</body>
+</html>

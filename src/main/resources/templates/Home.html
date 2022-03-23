@@ -3,12 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/index/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap" rel="stylesheet">
 </head>
+<header class="header">
+    <div class="dropdown" th:include="Moduls :: header(personNickName=${person.getNickName()}, personId=${person.getId()})"></div>
+</header>
 <body>
-  <h1>Welcome Home</h1>
-<br/>
-    <form th:method="post" th:action="@{/logout}">
-        <button type="submit">Logout</button>
-    </form>
+<div class="task_wrapper">
+    <div class="inner_task_wrapper" th:each="curTask :${person.getTasks()}">
+            <div class="task">
+                <p class="taskName" th:text="${curTask.getName()}">task name</p>
+                <div class="task_content_wrapper">
+                    <img class="logo" src="/index/logo.png" height="100" width="108">
+                    <p class="task_data_time"
+                       th:text="${curTask.getEventTime().toString().substring(0, 10)+' '+curTask.getEventTime().toString().substring(11, 16)}">
+                        data time:time</p>
+                    <p class="task_description" th:text="${curTask.getDescription()}">The complete source code for the
+                        example is available in this github project. It is a Maven project which can be imported and run
+                        as-is. The default setting uses Spring's convenience classes, which can be easily switched to
+                        Quartz API with a run-time parameter (refer to the README.md in the repository).</p>
+                    <div class="button_pack" style="width: 200px">
+                        <a class="task_button button_edit" th:href="@{'/tasks/{id}'(id=${curTask.getId()})}"></a>
+                        <form th:method="delete" th:action="@{'/tasks/{id}'(id=${curTask.getId()})}"
+                              th:object="${curTask}">
+                            <button class="task_button button_delete" type="submit"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</div>
+<a th:attr="style='align-self: center;position: relative;cursor: pointer; font-size: 20px;font-weight: 500;font-family: \'Lexend Deca\', sans-serif;text-decoration: none;color: black;cursor: pointer;'" th:href="@{'/tasks/add/{id}'(id=${person.getId()})}">Add new</a>
 </body>
 </html>

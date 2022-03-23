@@ -5,4 +5,5 @@ import com.example.lab_1.models.Task;
 
 public interface ContactService {
     void updateContact(Contact contact);
+    void removeById(Long id);
 }

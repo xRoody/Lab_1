@@ -1,11 +1,14 @@
 package com.example.lab_1.service;
 
+import com.example.lab_1.DTOs.ContactDTO;
 import com.example.lab_1.DTOs.PersonDTO;
 import com.example.lab_1.DTOs.TaskDTO;
+import com.example.lab_1.models.Contact;
 import com.example.lab_1.models.Person;
 import com.example.lab_1.models.Task;
 import com.example.lab_1.repositpries.PersonRepo;
 import com.example.lab_1.repositpries.RoleRepo;
+import com.example.lab_1.repositpries.TaskRepo;
 import com.example.lab_1.validationExceptions.UniqueEmailException;
 import com.example.lab_1.validationExceptions.UniqueLoginException;
 import com.example.lab_1.validationExceptions.UniqueNickNameException;
@@ -20,9 +23,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,43 +38,46 @@ import java.util.stream.Collectors;
 public class PersonServiceImpl implements PersonService {
     private final PersonRepo personRepo;
     private final RoleRepo roleRepo;
-    private final TaskServiceImpl taskRepo;
+    private final TaskRepo taskRepo;
+    private final TaskServiceImpl taskService;
     private final BCryptPasswordEncoder passwordEncoder;
 
     public Person savePerson(Person person) {
-        log.info("save new person");
+        log.info("save person name={}, email={}", person.getNickName(), person.getEmail());
         return personRepo.save(person);
     }
 
     public Person registerPerson(PersonDTO dto){
-        log.info("received person dto,try to register new person");
         Person person = Person.builder()
                 .login(dto.getLogin())
                 .email(dto.getEmail())
                 .password(passwordEncoder.encode(dto.getPassword()))
                 .roles(new HashSet<>())
-                .nickName(dto.getUsername())
+                .nickName(dto.getNickName())
                 .build();
         addRoleToPerson(person,"USER");
         return savePerson(person);
     }
 
-    @Override
-    public void validateDto(PersonDTO dto) throws UniqueLoginException, UniqueEmailException, UniqueNickNameException{
-        log.info("try to validate user data");
-        if(getPerson(dto.getLogin())!=null){
-            log.info("Login {} already exists", dto.getLogin());
-            throw new UniqueLoginException("Login "+dto.getLogin()+" already exists");
+    public void validateLogin(String login) throws UniqueLoginException {
+        if(getPerson(login)!=null){
+            log.info("Login {} already exists", login);
+            throw new UniqueLoginException("Login "+login+" already exists");
         }
-        if(getByNickName(dto.getUsername())!=null){
-            log.info("NickName {} already exists", dto.getUsername());
-            throw new UniqueNickNameException("NickName "+dto.getUsername()+" already exists");
+    }
+
+    public void validateUsername(String username) throws UniqueNickNameException {
+        if(getByNickName(username)!=null){
+            log.info("NickName {} already exists", username);
+            throw new UniqueNickNameException("NickName "+username+" already exists");
         }
-        if(getByEmail(dto.getEmail())!=null){
-            log.info("Email {} already exists", dto.getEmail());
-            throw new UniqueEmailException("Email "+dto.getEmail()+" already exists");
+    }
+
+    public void validateEmail(String email) throws UniqueEmailException {
+        if(getByEmail(email)!=null){
+            log.info("Email {} already exists", email);
+            throw new UniqueEmailException("Email "+email+" already exists");
         }
-        log.info("validation complete");
     }
 
     private Person getByEmail(String email){
@@ -81,13 +90,11 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person getPersonWithTasks(String login) {
-        log.info("fetch person {} with tasks", login);
         return personRepo.findByLoginWithTasks(login);
     }
 
     @Override
     public Person getPerson(String login) {
-        log.info("fetch person {} by login", login);
         return personRepo.findByLogin(login);
     }
 
@@ -102,20 +109,23 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void removePerson(Person person) {
-        log.info("remove person {}", person.getLogin());
-        personRepo.delete(person);
+    public void removePerson(Long personId) {
+        log.info("remove person {}", personId);
+        personRepo.deleteById(personId);
     }
 
     @Override
-    public void updatePerson(Person person) {
-        log.info("update person {}", person.getLogin());
+    public void updatePerson(PersonDTO personDTO) {
+        Person person=getById(personDTO.getId());
+        log.debug("update person {}", person.getLogin());
+        person.setNickName(personDTO.getNickName());
+        person.setEmail(personDTO.getEmail());
+        if (personDTO.getR_password()!=null) person.setPassword(passwordEncoder.encode(personDTO.getR_password()));
         savePerson(person);
     }
 
     @Override
     public List<Person> getAllPerson() {
-        log.info("fetch all persons");
         return personRepo.findAll();
     }
 
@@ -127,27 +137,37 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void addTaskToPerson(TaskDTO task, String login) {
-        log.info("add task to person {} by dto", login);
+    public void addTaskToPerson(TaskDTO task, Long id) {
+        log.info("add task to person id= {} by dto, with data: {}", id, task.toString());
         Task t=Task.builder()
                 .name(task.getName())
                 .description(task.getDescription())
+                .eventTime(LocalDateTime.parse(task.getEventTime(), DateTimeFormatter.ISO_LOCAL_DATE_TIME))
+                .contacts(new HashSet<>())
                 .build();
-        task.getContactDTOSet().forEach(x->taskRepo.addContact(t,x));
-        addTaskToPerson(t,login);
+        addTaskToPerson(t,id);
+        if (task.getContactDTOSet()!=null){
+            for(ContactDTO dto:task.getContactDTOSet()){
+                taskService.addContact(t,dto);
+            }
+        }
+        log.info(t.getContacts().toString());
     }
 
-    private void addTaskToPerson(Task task, String login) {
-        log.info("add task id={} to person {}", task.getId(), login);
-        Person person = getPerson(login);
+    private void addTaskToPerson(Task task, Long id) {
+        Person person = getById(id);
         task.setPerson(person);
         person.getTasks().add(task);
     }
 
     @Override
-    public void removeTaskFromPerson(Task task, String login) {
-        log.info("remove task id={} from person {}", task.getId(), login);
-        getPerson(login).getTasks().remove(task);
+    public void removeTaskFromPerson(Long taskId, String login) {
+        log.info("remove task id={} from person {}", taskId, login);
+        taskRepo.deleteById(taskId);
+    }
+
+    public Person getById(Long id){
+        return personRepo.getById(id);
     }
 
     @Override
@@ -159,6 +179,6 @@ public class PersonServiceImpl implements PersonService {
             throw new UsernameNotFoundException("");
         }
         Collection<SimpleGrantedAuthority> authorities = person.getRoles().stream().map(x -> new SimpleGrantedAuthority(x.getName())).collect(Collectors.toList());///
-        return new User(person.getLogin(), person.getPassword(), authorities); // !!!password encode in registration method!!!
+        return new User(person.getLogin(), person.getPassword(), authorities);
     }
 }

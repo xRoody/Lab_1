@@ -13,17 +13,19 @@ import java.util.List;
 
 
 public interface PersonService extends UserDetailsService {
-    //Person savePerson(Person person);
+
     Person registerPerson(PersonDTO dto);
     Person getPerson(String login);
     void addRoleToPerson(String login, String roleName);
-    void removePerson(Person person);
-    void updatePerson(Person person);
+    void removePerson(Long personId);
+    void updatePerson(PersonDTO person);
     List<Person> getAllPerson();
-    void validateDto(PersonDTO dto) throws UniqueLoginException, UniqueEmailException, UniqueNickNameException;
     void removeRoleFromPerson(String login, String role);
-    //void addTaskToPerson(Task task, String login);
-    void addTaskToPerson(TaskDTO task, String login);
-    void removeTaskFromPerson(Task task, String login);
+    void validateLogin(String login) throws UniqueLoginException;
+    void validateUsername(String username) throws UniqueNickNameException;
+    void validateEmail(String email) throws UniqueEmailException;
+    void addTaskToPerson(TaskDTO task, Long persId);
+    void removeTaskFromPerson(Long taskId, String login);
     Person getPersonWithTasks(String login);
+    Person getById(Long id);
 }

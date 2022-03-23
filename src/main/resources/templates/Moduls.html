@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<header>
+    <div class="dropdown" th:fragment="header (personNickName, personId)">
+        <a class="dropdown_hover" th:text="${personNickName}" th:href="@{/}">UserName</a>
+        <div class="dropdown_menu_shadow"></div>
+        <div class="dropdown_menu">
+            <a class="menu_element" th:href="@{'/person/{id}'(id=${personId})}">My&nbsp;account</a>
+            <form th:method="post" th:action="@{/logout}">
+                <button type="submit" class="drop_down_button">Logout</button>
+            </form>
+        </div>
+    </div>
+</header>
+<body>
+
+</body>
+</html>
