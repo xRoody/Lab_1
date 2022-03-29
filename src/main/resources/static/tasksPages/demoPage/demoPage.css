@@ -191,3 +191,9 @@ body{
     display: flex;
     justify-content: space-between;
 }
+.exception{
+    color: red;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 15px;
+    margin: 5px;
+}

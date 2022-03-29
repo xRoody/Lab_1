@@ -26,16 +26,14 @@
                         as-is. The default setting uses Spring's convenience classes, which can be easily switched to
                         Quartz API with a run-time parameter (refer to the README.md in the repository).</p>
                     <div class="button_pack" style="width: 200px">
-                        <a class="task_button button_edit" th:href="@{'/tasks/{id}'(id=${curTask.getId()})}"></a>
-                        <form th:method="delete" th:action="@{'/tasks/{id}'(id=${curTask.getId()})}"
-                              th:object="${curTask}">
-                            <button class="task_button button_delete" type="submit"></button>
+                        <a class="task_button button_edit" th:href="@{'/tasks/{id}'(id=${curTask.getId()})}" style="display: flex;align-items: center;justify-content: center;"><img class="logo" src="/index/pen.png" height="45"></a>
+                        <form th:method="delete" th:action="@{'/tasks/{id}'(id=${curTask.getId()})}" th:object="${curTask}">
+                            <button class="task_button button_delete" type="submit"><img class="logo" src="/index/trash.png" height="45"></button>
                         </form>
                     </div>
                 </div>
             </div>
     </div>
-
 </div>
 <a th:attr="style='align-self: center;position: relative;cursor: pointer; font-size: 20px;font-weight: 500;font-family: \'Lexend Deca\', sans-serif;text-decoration: none;color: black;cursor: pointer;'" th:href="@{'/tasks/add/{id}'(id=${person.getId()})}">Add new</a>
 </body>

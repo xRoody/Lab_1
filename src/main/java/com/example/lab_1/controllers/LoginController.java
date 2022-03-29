@@ -16,10 +16,12 @@ public class LoginController {
         StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
         binder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
+
     @GetMapping("/login")
     public String login(){
         return "LoginPage";
     }
+
     @GetMapping("/login-error")
     public String showError(Model model){
         model.addAttribute("error", "Wrong login and password pair");

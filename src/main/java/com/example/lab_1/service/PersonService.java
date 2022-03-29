@@ -24,7 +24,7 @@ public interface PersonService extends UserDetailsService {
     void validateLogin(String login) throws UniqueLoginException;
     void validateUsername(String username) throws UniqueNickNameException;
     void validateEmail(String email) throws UniqueEmailException;
-    void addTaskToPerson(TaskDTO task, Long persId);
+    Task addTaskToPerson(TaskDTO task, Long persId);
     void removeTaskFromPerson(Long taskId, String login);
     Person getPersonWithTasks(String login);
     Person getById(Long id);

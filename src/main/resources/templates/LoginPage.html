@@ -12,6 +12,7 @@
 <div class="login_div">
     <h1>Log in</h1>
     <form th:method="post" th:action="@{/processUser}" class="login_form">
+        <p th:if="${param.logout}!=null" th:text="${'You have been log out'}" th:attr="class='exception'"></p>
         <p th:if="${error}!=null" th:text="${error}" th:attr="class='exception'"></p>
         <label class="login_label">
             Username<input type="text" placeholder="Enter your username" name="username" class="login_input">

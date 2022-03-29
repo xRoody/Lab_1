@@ -15,11 +15,10 @@ public class IndexController {
     private final PersonService personService;
 
     @GetMapping("/")
-    public String home(Principal principal, Model model){
-        Person person=personService.getPersonWithTasks(principal.getName());
+    public String home(Principal principal, Model model) {
+        Person person = personService.getPersonWithTasks(principal.getName());
         model.addAttribute("person", person);
         return "Home";
     }
-
 
 }

@@ -70,15 +70,15 @@ public class PersonValidator {
             result.addError(new FieldError("personDTO", name, "Please enter your " + name));
             f = false;
         } else if (str.length() <= min) {
-            result.addError(new FieldError("personDTO", name, name + " must be over 3"));
+            result.addError(new FieldError("personDTO", name, str, true, null, null,  name + " must be over 3"));
             f = false;
         } else if (str.length() >= max) {
-            result.addError(new FieldError("personDTO", name, name + " must be less then 20"));
+            result.addError(new FieldError("personDTO", name, str, true, null, null, name + " must be less then 20"));
             f = false;
         } else {
             Matcher matcher = pattern.matcher(str);
             if (!matcher.matches()) {
-                result.addError(new FieldError("personDTO", name, name + " must contains latin characters, numbers and #@$!%?& only"));
+                result.addError(new FieldError("personDTO", name, str, true, null, null, name + " must contains latin characters, numbers and #@$!%?& only"));
                 f = false;
             }
         }
@@ -100,7 +100,7 @@ public class PersonValidator {
         } else {
             Matcher matcher = emailPattern.matcher(email);
             if (!matcher.matches()) {
-                result.addError(new FieldError("personDTO", "email", "Please enter correct email"));
+                result.addError(new FieldError("personDTO", "email",email, true, null, null, "Please enter correct email"));
                 f = false;
             }
         }
@@ -111,7 +111,7 @@ public class PersonValidator {
         try {
             personService.validateEmail(email);
         } catch (UniqueEmailException e) {
-            result.addError(new FieldError("personDTO", "email", e.getMessage()));
+            result.addError(new FieldError("personDTO", "email",email, true, null, null, e.getMessage()));
         }
     }
 
@@ -119,7 +119,7 @@ public class PersonValidator {
         try {
             personService.validateLogin(login);
         } catch (UniqueLoginException e) {
-            result.addError(new FieldError("personDTO", "login", e.getMessage()));
+            result.addError(new FieldError("personDTO", "login",login, true, null, null, e.getMessage()));
         }
     }
 
@@ -127,7 +127,7 @@ public class PersonValidator {
         try {
             personService.validateUsername(username);
         } catch (UniqueNickNameException e) {
-            result.addError(new FieldError("personDTO", "nickName", e.getMessage()));
+            result.addError(new FieldError("personDTO", "nickName",username, true, null, null, e.getMessage()));
         }
     }
 }

@@ -196,9 +196,17 @@ body {
     filter: drop-shadow(0 0 5px #5e5e5e);
 }
 
+
+.button_edit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .button_edit:hover {
     background-color: #ffff2f;
 }
+
 
 .button_delete:hover {
     background-color: #ff1f1f;

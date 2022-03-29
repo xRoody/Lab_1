@@ -1,8 +1,10 @@
 package com.example.lab_1.controllers;
 
 import com.example.lab_1.DTOs.PersonDTO;
+import com.example.lab_1.configs.QuartzConfig;
 import com.example.lab_1.models.Person;
 import com.example.lab_1.service.PersonService;
+import com.example.lab_1.service.QuartzService;
 import com.example.lab_1.validators.PersonValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -20,6 +22,7 @@ import java.util.Objects;
 public class PersonController {
     private final PersonService personService;
     private final PersonValidator personValidator;
+
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {

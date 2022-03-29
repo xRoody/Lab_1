@@ -20,7 +20,7 @@
                 Title<input type="text" name="name" class="login_input"
                             th:field="*{name}">
             </label>
-            <p th:attr="class='exception'" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
             <label class="login_label">
                 Description<textarea rows="10" cols="30" name="description" class="login_tet_area"
                                      th:field="*{description}" style="resize: none"></textarea>
@@ -29,31 +29,45 @@
                 Date-time<input type="datetime-local" name="eventTime" class="login_input"
                                 th:field="*{eventTime}">
             </label>
-            <p th:attr="class='exception'" th:if="${#fields.hasErrors('eventTime')}" th:errors="*{eventTime}"></p>
+            <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'" th:if="${#fields.hasErrors('eventTime')}" th:errors="*{eventTime}"></p>
             <button type="submit" class="add_task_button" style="margin-top: 10px">Save</button>
         </div>
         <div class="contact_list_wrapper">
             <p class="contacts_title">Contacts</p>
             <div class="contact_list_inner" th:each="contact, stat : *{contactDTOSet}">
                 <div>
-                    <input type="text" class="menu_element" style="margin: 5px 0 0 0; cursor: text"
-                           th:name="|contactDTOSet[__${stat.index}__].email|"
-                           th:field="*{contactDTOSet[__${stat.index}__].email}">
-                    <button style="align-self: end" type="submit" class="add_task_button" th:formaction="@{'/tasks/deleteContact/{ind}'(ind=${stat.index})}">Delete</button>
+                    <div>
+                        <input type="text" class="menu_element" style="margin: 5px 0 0 0; cursor: text"
+                               th:name="|contactDTOSet[__${stat.index}__].email|"
+                               th:field="*{contactDTOSet[__${stat.index}__].email}" th:placeholder="${contact.email}">
+
+                        <button style="align-self: end" type="submit" class="add_task_button"
+                                th:formaction="@{'/tasks/deleteContact/{ind}'(ind=${stat.index})}">Delete
+                        </button>
+                    </div>
+                    <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'" th:if="${#fields.hasErrors('contactDTOSet['+stat.index+'].email')}"
+                       th:errors="*{contactDTOSet[__${stat.index}__].email}"></p>
                 </div>
             </div>
+            <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'" th:if="${#fields.hasErrors('contactDTOSet')}"
+               th:errors="*{contactDTOSet}" style="align-self: center"></p>
         </div>
         <div class="new_contact_input_wrapper">
             <p class="contacts_title">Add&nbsp;new&nbsp;contact</p>
-            <div class="new_contact_input">
-                <label class="login_label"
-                       style="font-size: 20px; flex-direction: row; align-items: center; justify-content: center">
-                    Email<input type="text" name="email" class="login_input"
-                                style="font-size: 20px; width: 70%;height: 21px; margin: 0 0 0 5px"
-                                th:field="*{newContact}">
-                </label>
-                <p th:attr="class='exception'" th:if="${#fields.hasErrors('newContact')}" th:errors="*{newContact}"></p>
-                <button style="margin-right: 10px; align-self: end" type="submit" class="add_task_button" th:formaction="@{/tasks/addContact}">Add</button>
+            <div>
+                <div class="new_contact_input">
+                    <label class="login_label"
+                           style="font-size: 20px; flex-direction: row; align-items: center; justify-content: center">
+                        Email<input type="text" name="email" class="login_input"
+                                    style="font-size: 20px; width: 70%;height: 21px; margin: 0 0 0 5px"
+                                    th:field="*{newContact}">
+                    </label>
+                    <button style="margin-right: 10px; align-self: end" type="submit" class="add_task_button"
+                            th:formaction="@{/tasks/addContact}">Add
+                    </button>
+                </div>
+                <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'" th:if="${#fields.hasErrors('newContact')}"
+                   th:errors="*{newContact}"></p>
             </div>
         </div>
     </form>

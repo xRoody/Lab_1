@@ -56,6 +56,7 @@ public class PersonServiceImpl implements PersonService {
                 .nickName(dto.getNickName())
                 .build();
         addRoleToPerson(person,"USER");
+        System.out.println(person);
         return savePerson(person);
     }
 
@@ -137,7 +138,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void addTaskToPerson(TaskDTO task, Long id) {
+    public Task addTaskToPerson(TaskDTO task, Long id) {
         log.info("add task to person id= {} by dto, with data: {}", id, task.toString());
         Task t=Task.builder()
                 .name(task.getName())
@@ -151,7 +152,7 @@ public class PersonServiceImpl implements PersonService {
                 taskService.addContact(t,dto);
             }
         }
-        log.info(t.getContacts().toString());
+        return t;
     }
 
     private void addTaskToPerson(Task task, Long id) {

@@ -19,9 +19,9 @@
         <p th:attr="class='exception'" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></p>
         <label class="login_label">
             Username<input type="text" placeholder="Enter your username" name="username" class="login_input"
-                           th:field="*{getNickName}">
+                           th:field="*{nickName}">
         </label>
-        <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'"  th:if="${#fields.hasErrors('username')}" th:errors="*{getNickName}"></p>
+        <p th:attr="style='color: red;font-family: \'Lexend Deca\', sans-serif;font-size: 15px;'"  th:if="${#fields.hasErrors('nickName')}" th:errors="*{nickName}"></p>
         <label class="login_label">
             Password<input type="password" placeholder="Enter your password" name="password" class="login_input"
                            th:field="*{password}">
