@@ -14,4 +14,5 @@ public interface TaskService {
     Task getTaskWithContacts(Long taskId);
     public void removeTaskById(Long id);
     TaskDTO getDTOByTaskById(Long taskId);
+    public boolean makeComplete(Long id);
 }

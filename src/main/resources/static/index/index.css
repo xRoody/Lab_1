@@ -217,3 +217,36 @@ body {
     position: relative;
     cursor: pointer;
 }
+
+.search_input{
+    height: 25px;
+    font-size: 19px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 500;
+    border-radius: 13px 0 0 13px;
+    padding-left: 8px;
+    margin: 0;
+}
+.search_button{
+    margin: 0;
+    padding: 0;
+    height: 31px;
+    border: 2px #3e3e3e solid;
+    border-radius: 0 13px 13px 0;
+    border-left: none;
+    cursor: pointer;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search_form{
+    display: flex;
+    align-items: center;
+    height: 31px;
+}
+.menu_element{
+    background: none;
+    border: none;
+}

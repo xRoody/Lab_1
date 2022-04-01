@@ -2,10 +2,13 @@ package com.example.lab_1.service;
 
 import com.example.lab_1.configs.JobFactory;
 import com.example.lab_1.jobs.TaskJob;
+import com.example.lab_1.schedulerExceptions.JobCreateException;
+import com.example.lab_1.schedulerExceptions.JobRemoveException;
+import com.example.lab_1.schedulerExceptions.JobUpdateException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -14,10 +17,10 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-@Component
+@Service
 @RequiredArgsConstructor
 @Slf4j
-public class QuartzService {
+public class QuartzServiceImpl implements QuartzService{
     private final Scheduler scheduler;
     private final JobFactory jobFactory;
 
@@ -36,22 +39,24 @@ public class QuartzService {
         return jobFactory.createSimpleTrigger(triggerName,triggerGroup, date);
     }
 
-    public void addNewJob(JobDetail jobDetail, Trigger trigger){
+    public void addNewJob(JobDetail jobDetail, Trigger trigger) throws JobCreateException {
         try {
             scheduler.scheduleJob(jobDetail, trigger);
             log.info("Job has been added {}", isExists(jobDetail.getKey().getName(), jobDetail.getKey().getGroup()));
         } catch (SchedulerException e) {
             log.warn("Job creating error"+e.getMessage());
+            throw new JobCreateException("Job has not been created", e);
         }
     }
 
-    public void removeJob(String jobName, String jobGroup, String triggerKey, String triggerGroup){
+    public void removeJob(String jobName, String jobGroup, String triggerKey, String triggerGroup) throws JobRemoveException {
         try {
             scheduler.unscheduleJob(TriggerKey.triggerKey(triggerKey, triggerGroup));
             scheduler.deleteJob(JobKey.jobKey(jobName, jobGroup));
             log.info("Job has been removed {}", isExists(jobName, jobGroup));
         } catch (SchedulerException e) {
-            log.warn("Job creating error"+e.getMessage());
+            log.warn("Job removing error"+e.getMessage());
+            throw new JobRemoveException("Job has not been removed", e);
         }
     }
 
@@ -59,12 +64,12 @@ public class QuartzService {
         try {
             return scheduler.checkExists(JobKey.jobKey(jobName,jobGroup));
         } catch (SchedulerException e) {
-            log.warn("Job creating error"+e.getMessage());
+            log.warn("Job existing check error"+e.getMessage());
         }
         return false;
     }
 
-    public void updateJob(Trigger newTrigger, String triggerName, String triggerGroup, String oldJobName, String oldJobGroup){
+    public void updateJob(Trigger newTrigger, String triggerName, String triggerGroup, String oldJobName, String oldJobGroup) throws JobUpdateException {
         try {
             log.info("Job has been updated {}", isExists(oldJobName, oldJobGroup));
             if (scheduler.getTriggerState(TriggerKey.triggerKey(triggerName, triggerGroup)).equals(Trigger.TriggerState.NONE)){
@@ -72,12 +77,13 @@ public class QuartzService {
                 updateCompletedJob(oldJobName,oldJobGroup,triggerName,triggerGroup,newTrigger);
             }
             scheduler.rescheduleJob(TriggerKey.triggerKey(triggerName, triggerGroup),newTrigger);
-        } catch (SchedulerException e) {
-            log.warn("Job creating error"+e.getMessage());
+        } catch (SchedulerException | JobCreateException | JobRemoveException e) {
+            log.warn("Job updating error"+e.getMessage());
+            throw new JobUpdateException("Job has not been updated",e);
         }
     }
 
-    public void updateCompletedJob(String jobName, String jobGroup, String oldTriggerKey, String oldTriggerGroup, Trigger newTrigger){
+    private void updateCompletedJob(String jobName, String jobGroup, String oldTriggerKey, String oldTriggerGroup, Trigger newTrigger) throws JobRemoveException, JobCreateException {
         removeJob(jobName, jobGroup, oldTriggerKey, oldTriggerGroup);
         addNewJob(
                 createJobDetail(TaskJob.class, jobName, jobGroup),

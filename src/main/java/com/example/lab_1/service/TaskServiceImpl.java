@@ -58,6 +58,7 @@ public class TaskServiceImpl implements TaskService{
         t.setName(task.getName());
         t.setDescription(task.getDescription());
         t.setEventTime(LocalDateTime.parse(task.getEventTime(), DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+        t.setComplete(false);
         removeAllContacts(t);
         t.setContacts(new HashSet<>());
         if (task.getContactDTOSet()!=null) {
@@ -95,8 +96,16 @@ public class TaskServiceImpl implements TaskService{
                 .name(task.getName())
                 .description(task.getDescription())
                 .eventTime(task.getEventTime().toString())
+                .isComplete(task.isComplete())
                 .contactDTOSet(list)
                 .build();
         return t;
+    }
+
+    public boolean makeComplete(Long id){
+        Task task=taskRepo.getById(id);
+        task.setComplete(true);
+        taskRepo.save(task);
+        return task.isComplete();
     }
 }

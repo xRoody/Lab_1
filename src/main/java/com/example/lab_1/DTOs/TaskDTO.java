@@ -22,4 +22,5 @@ public class TaskDTO {
     private List<ContactDTO> contactDTOSet;
     private String newContact;
     private Long personId;
+    private boolean isComplete=false;
 }

@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
+/*
+* Here configure data source bean to Quartz
+* */
 
 @Configuration
 @EnableAutoConfiguration

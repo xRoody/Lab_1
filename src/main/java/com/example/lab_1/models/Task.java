@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -28,6 +29,9 @@ public class Task {
     private String description;
     @Column
     private LocalDateTime eventTime;
+    @Column
+    @ColumnDefault("false")
+    private boolean isComplete;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "person_id")
     private Person person;

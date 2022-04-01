@@ -37,11 +37,10 @@
             <div class="contact_list_inner" th:each="contact, stat : *{contactDTOSet}">
                 <div>
                     <div>
-                        <input type="text" class="menu_element" style="margin: 5px 0 0 0; cursor: text"
+                        <input th:readonly="${#strings.equals(contact.getEmail(),personEmail)}" type="text" class="menu_element" style="margin: 5px 0 0 0; cursor: text"
                                th:name="|contactDTOSet[__${stat.index}__].email|"
                                th:field="*{contactDTOSet[__${stat.index}__].email}" th:placeholder="${contact.email}">
-
-                        <button style="align-self: end" type="submit" class="add_task_button"
+                        <button th:if="${not #strings.equals(contact.getEmail(),personEmail)}" style="align-self: end" type="submit" class="add_task_button"
                                 th:formaction="@{'/tasks/deleteContact/{ind}'(ind=${stat.index})}">Delete
                         </button>
                     </div>

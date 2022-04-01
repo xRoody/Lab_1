@@ -12,11 +12,24 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/*
+* Quartz config
+* */
+
 @Configuration
 @AllArgsConstructor
 public class QuartzConfig {
+    /*
+    * dataSource is used to get and store data
+    * */
     private final DataSource dataSource;
+    /*
+     * applicationContext is used to set context in bean factory
+     * */
     private final ApplicationContext applicationContext;
+    /*
+     * quartzProperties is used to set quartz property
+     * */
     private final QuartzProperties quartzProperties;
 
 

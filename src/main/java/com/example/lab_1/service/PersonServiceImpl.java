@@ -25,10 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -169,6 +166,81 @@ public class PersonServiceImpl implements PersonService {
 
     public Person getById(Long id){
         return personRepo.getById(id);
+    }
+
+    public PersonDTO getDTObyId(Long id){
+        Person person=getById(id);
+        return PersonDTO.builder()
+                .email(person.getEmail())
+                .id(person.getId())
+                .login(person.getLogin())
+                .nickName(person.getNickName())
+                .build();
+    }
+
+    public List<TaskDTO> getTasksDTOListByUserId(Long id){
+        Person person=getById(id);
+        List<TaskDTO> taskDTOS=new ArrayList<>();
+        for(Task task:person.getTasks()){
+            taskDTOS.add(taskService.getDTOByTaskById(task.getId()));
+        }
+        return taskDTOS;
+    }
+
+    public List<TaskDTO> searchTasksDTOListByUserIdAndTaskName(Long id, String name){
+        List<TaskDTO> taskDTOS=new ArrayList<>();
+        for(Task task:taskRepo.getAllByPersonSortByTaskName(name, id)){
+            taskDTOS.add(taskService.getDTOByTaskById(task.getId()));
+        }
+        return taskDTOS;
+    }
+
+    public List<TaskDTO> getAllByPersonSortByDataDSC(Person person){
+        List<TaskDTO> taskDTOS=new ArrayList<>();
+        for(Task task:taskRepo.findAllByPersonOrderByEventTimeDesc(person)){
+            taskDTOS.add(taskService.getDTOByTaskById(task.getId()));
+        }
+        return taskDTOS;
+    }
+
+    public List<TaskDTO> getAllByPersonSortByDataASC(Person person){
+        List<TaskDTO> taskDTOS=new ArrayList<>();
+        for(Task task:taskRepo.findAllByPersonOrderByEventTimeAsc(person)){
+            taskDTOS.add(taskService.getDTOByTaskById(task.getId()));
+        }
+        return taskDTOS;
+    }
+
+    public List<TaskDTO> getAllByPersonSortByName(Person person){
+        List<TaskDTO> taskDTOS=new ArrayList<>();
+        for(Task task:taskRepo.findAllByPersonOrderByName(person)){
+            taskDTOS.add(taskService.getDTOByTaskById(task.getId()));
+        }
+        return taskDTOS;
+    }
+
+    public  List<TaskDTO> getAllByPersonSortByDataASCAndName(Person person, String name){
+        List<TaskDTO> taskDTOS=new ArrayList<>();
+        for(Task task:taskRepo.findAllByPersonAndNameOrderByEventTimeAsc(person, name)){
+            taskDTOS.add(taskService.getDTOByTaskById(task.getId()));
+        }
+        return taskDTOS;
+    }
+
+    public  List<TaskDTO> getAllByPersonSortByDataDscAndName(Person person, String name){
+        List<TaskDTO> taskDTOS=new ArrayList<>();
+        for(Task task:taskRepo.findAllByPersonAndNameOrderByEventTimeDesc(person, name)){
+            taskDTOS.add(taskService.getDTOByTaskById(task.getId()));
+        }
+        return taskDTOS;
+    }
+
+    public  List<TaskDTO> getAllByPersonSortNameAndByName(Person person, String name){
+        List<TaskDTO> taskDTOS=new ArrayList<>();
+        for(Task task:taskRepo.findAllByPersonAndNameOrderByName(person, name)){
+            taskDTOS.add(taskService.getDTOByTaskById(task.getId()));
+        }
+        return taskDTOS;
     }
 
     @Override

@@ -9,32 +9,67 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <header class="header">
-    <div class="dropdown" th:include="Moduls :: header(personNickName=${person.getNickName()}, personId=${person.getId()})"></div>
-</header>
-<body>
-<div class="task_wrapper">
-    <div class="inner_task_wrapper" th:each="curTask :${person.getTasks()}">
-            <div class="task">
-                <p class="taskName" th:text="${curTask.getName()}">task name</p>
-                <div class="task_content_wrapper">
-                    <img class="logo" src="/index/logo.png" height="100" width="108">
-                    <p class="task_data_time"
-                       th:text="${curTask.getEventTime().toString().substring(0, 10)+' '+curTask.getEventTime().toString().substring(11, 16)}">
-                        data time:time</p>
-                    <p class="task_description" th:text="${curTask.getDescription()}">The complete source code for the
-                        example is available in this github project. It is a Maven project which can be imported and run
-                        as-is. The default setting uses Spring's convenience classes, which can be easily switched to
-                        Quartz API with a run-time parameter (refer to the README.md in the repository).</p>
-                    <div class="button_pack" style="width: 200px">
-                        <a class="task_button button_edit" th:href="@{'/tasks/{id}'(id=${curTask.getId()})}" style="display: flex;align-items: center;justify-content: center;"><img class="logo" src="/index/pen.png" height="45"></a>
-                        <form th:method="delete" th:action="@{'/tasks/{id}'(id=${curTask.getId()})}" th:object="${curTask}">
-                            <button class="task_button button_delete" type="submit"><img class="logo" src="/index/trash.png" height="45"></button>
-                        </form>
+
+    <form style="margin-right:50px;display: flex; align-items: center;height: 31px;" method="get" th:action="@{'/'}">
+        <div style="display: flex; align-items: center; margin-right: 50px">
+            <p class="dropdown_hover" style="margin: 0">Sort by:</p>
+            <div class="dropdown">
+                <p class="dropdown_hover" style="margin: 0" th:text="${sort}">UserName</p>
+                <input type="hidden" th:value="${sort}" th:name="${'sort'}">
+                <div class="dropdown_menu_shadow"></div>
+                <div class="dropdown_menu" style="align-items: center">
+                    <div th:each="cur : ${otherSorts}">
+                        <button class="menu_element" type="submit" th:text="${cur}" th:value="${cur}" th:name="${'sortGetter'}"></button>
                     </div>
                 </div>
             </div>
+        </div>
+        <input style="height: 25px;font-size: 19px;font-family: 'Lexend Deca', sans-serif;font-weight: 500;border-radius: 13px 0 0 13px;padding-left: 8px;margin: 0;"
+               name="query" type="text">
+        <button style="margin: 0;padding: 0;height: 31px;border: 2px #3e3e3e solid;border-radius: 0 13px 13px 0;border-left: none;cursor: pointer;width: 30px;display: flex;align-items: center;justify-content: center;"
+                type="submit"><img src="/index/si.png" height="18"></button>
+    </form>
+    <div class="dropdown">
+        <a class="dropdown_hover" th:text="${personName}" th:href="@{/}">UserName</a>
+        <div class="dropdown_menu_shadow"></div>
+        <div class="dropdown_menu">
+            <a class="menu_element" th:href="@{'/person/{id}'(id=${personId})}">My&nbsp;account</a>
+            <form th:method="post" th:action="@{/logout}">
+                <button type="submit" class="drop_down_button">Logout</button>
+            </form>
+        </div>
+    </div>
+</header>
+<body>
+<div class="task_wrapper">
+    <div class="inner_task_wrapper" th:each="curTask :${tasks}">
+        <div class="task">
+            <p class="taskName" th:text="${curTask.getName()}">task name</p>
+            <div class="task_content_wrapper">
+                <img class="logo" th:attrappend="src=${curTask.isComplete()? '/index/exclam.png':'/index/logo.png'}"
+                     height="100" width="108">
+                <p class="task_data_time"
+                   th:text="${curTask.getEventTime().toString().substring(0, 10)+' '+curTask.getEventTime().toString().substring(11, 16)}">
+                    data time:time</p>
+                <p class="task_description" th:text="${curTask.getDescription()}">The complete source code for the
+                    example is available in this github project. It is a Maven project which can be imported and run
+                    as-is. The default setting uses Spring's convenience classes, which can be easily switched to
+                    Quartz API with a run-time parameter (refer to the README.md in the repository).</p>
+                <div class="button_pack" style="width: 200px">
+                    <a class="task_button button_edit" th:href="@{'/tasks/{id}'(id=${curTask.getId()})}"
+                       style="display: flex;align-items: center;justify-content: center;"><img class="logo"
+                                                                                               src="/index/pen.png"
+                                                                                               height="45"></a>
+                    <form th:method="delete" th:action="@{'/tasks/{id}'(id=${curTask.getId()})}" th:object="${curTask}">
+                        <button class="task_button button_delete" type="submit"><img class="logo" src="/index/trash.png"
+                                                                                     height="45"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<a th:attr="style='align-self: center;position: relative;cursor: pointer; font-size: 20px;font-weight: 500;font-family: \'Lexend Deca\', sans-serif;text-decoration: none;color: black;cursor: pointer;'" th:href="@{'/tasks/add/{id}'(id=${person.getId()})}">Add new</a>
+<a th:attr="style='align-self: center;position: relative;cursor: pointer; font-size: 20px;font-weight: 500;font-family: \'Lexend Deca\', sans-serif;text-decoration: none;color: black;cursor: pointer;'"
+   th:href="@{'/tasks/add/{id}'(id=${personId})}">Add new</a>
 </body>
 </html>
