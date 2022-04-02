@@ -18,14 +18,24 @@ import org.quartz.JobExecutionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/*
+* Job component to Quartz. This class is task job
+* */
+
 @Component
 @Slf4j
 public class TaskJob implements Job {
-
+    /*
+     * taskService is used to interact with task model
+     * */
     private  TaskService taskService;
-
+    /*
+     * personService is used to interact with person model
+     * */
     private PersonService personService;
-
+    /*
+     * mailService is used to configure and send messages
+     * */
     private MailService mailService;
     @Autowired
     public void setTaskService(TaskService taskService) {

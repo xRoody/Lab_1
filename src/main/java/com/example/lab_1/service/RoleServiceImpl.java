@@ -17,7 +17,9 @@ import java.util.List;
 @Slf4j
 public class RoleServiceImpl implements RoleService{
     private final RoleRepo roleRepo;
-
+    /*
+    * This method is used to save new role by role dto object
+    * */
     @Override
     public Role saveRole(RoleDTO role){
         return saveRole(Role.builder().name(role.getRoleName().toUpperCase()).build());
@@ -29,8 +31,11 @@ public class RoleServiceImpl implements RoleService{
         return roleRepo.save(role);
     }
 
+    /*
+    * This method is used to remove role by unique name
+    * */
     @Override
-    public void removeRole(String roleName) { // Role/ name
+    public void removeRole(String roleName) {
         log.info("remove role {}", roleName.toUpperCase());
         roleRepo.removeByName(roleName);
     }

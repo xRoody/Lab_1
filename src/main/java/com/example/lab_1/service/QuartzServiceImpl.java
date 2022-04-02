@@ -24,21 +24,40 @@ public class QuartzServiceImpl implements QuartzService{
     private final Scheduler scheduler;
     private final JobFactory jobFactory;
 
+
+    /*
+    * Just debug method
+    * */
     @PostConstruct
     public void init(){
-        log.info("Service initialization complete");
+        log.debug("Service initialization complete");
     }
 
+    /*
+    * This method is used to create JOB from Quartz
+    * @param jobClass define class of this job
+    * @param jobName define the job name (unique in group)
+    * @param jobGroup define the job group name (unique)
+    * */
     public JobDetail createJobDetail(Class<? extends Job> jobClass, String jobName, String jobGroupName){
         return jobFactory.createJob(jobClass,jobName,jobGroupName);
     }
-
+    /*
+    * This method is used to create trigger from Quartz
+    * @param triggerGroup define the trigger group name (unique)
+    * @param triggerName define the trigger name (unique in group)
+    * @param startTime define the trigger start time
+    * */
     public Trigger createTrigger(String triggerName,String triggerGroup, LocalDateTime startDate){
         Instant instant = startDate.atZone(ZoneId.systemDefault()).toInstant();
         Date date=Date.from(instant);
         return jobFactory.createSimpleTrigger(triggerName,triggerGroup, date);
     }
-
+    /*
+    * This method is used to add job in runtime
+    * @param jobDetail - job details
+    * @param trigger - trigger for job
+    * */
     public void addNewJob(JobDetail jobDetail, Trigger trigger) throws JobCreateException {
         try {
             scheduler.scheduleJob(jobDetail, trigger);
@@ -49,6 +68,13 @@ public class QuartzServiceImpl implements QuartzService{
         }
     }
 
+    /*
+     * This method is used to remove job in runtime
+     * @param jobName define the job name (unique in group)
+     * @param jobGroup define the job group name (unique)
+     * @param triggerGroup define the trigger group name (unique)
+     * @param triggerName define the trigger name (unique in group)
+     * */
     public void removeJob(String jobName, String jobGroup, String triggerKey, String triggerGroup) throws JobRemoveException {
         try {
             scheduler.unscheduleJob(TriggerKey.triggerKey(triggerKey, triggerGroup));
@@ -59,7 +85,11 @@ public class QuartzServiceImpl implements QuartzService{
             throw new JobRemoveException("Job has not been removed", e);
         }
     }
-
+    /*
+    * Just debug method
+    * @param jobName define the job name (unique in group)
+    * @param jobGroup define the job group name (unique)
+    * */
     public boolean isExists(String jobName, String jobGroup){
         try {
             return scheduler.checkExists(JobKey.jobKey(jobName,jobGroup));
@@ -68,7 +98,14 @@ public class QuartzServiceImpl implements QuartzService{
         }
         return false;
     }
-
+    /*
+    * This method is used to update job in runtime
+    * @param oldJobName define the job name (unique in group)
+    * @param oldJobGroup define the job group name (unique)
+    * @param triggerGroup define the trigger group name (unique)
+    * @param triggerName define the trigger name (unique in group)
+    * @param newTrigger - new trigger for this job
+    * */
     public void updateJob(Trigger newTrigger, String triggerName, String triggerGroup, String oldJobName, String oldJobGroup) throws JobUpdateException {
         try {
             log.info("Job has been updated {}", isExists(oldJobName, oldJobGroup));
@@ -83,6 +120,14 @@ public class QuartzServiceImpl implements QuartzService{
         }
     }
 
+    /*
+    * This method is used to update already completed job. Actually this method created job again.
+    * @param oldJobName define the job name (unique in group)
+    * @param oldJobGroup define the job group name (unique)
+    * @param triggerGroup define the trigger group name (unique)
+    * @param triggerName define the trigger name (unique in group)
+    * @param newTrigger - new trigger for this job
+    * */
     private void updateCompletedJob(String jobName, String jobGroup, String oldTriggerKey, String oldTriggerGroup, Trigger newTrigger) throws JobRemoveException, JobCreateException {
         removeJob(jobName, jobGroup, oldTriggerKey, oldTriggerGroup);
         addNewJob(
@@ -91,6 +136,9 @@ public class QuartzServiceImpl implements QuartzService{
         );
     }
 
+    /*
+    * This method is used to clear scheduler job pull
+    * */
     public void clearScheduler(){
         try {
             scheduler.clear();
@@ -99,6 +147,9 @@ public class QuartzServiceImpl implements QuartzService{
         }
     }
 
+    /*
+    * This post process method is used to correctly close data source (by shutting down scheduler)
+    * */
     @PreDestroy
     public void destroy(){
         try {

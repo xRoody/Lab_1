@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
+/*
+* This class is contact DTO.
+* */
+
 @Data
 @Builder
 @AllArgsConstructor

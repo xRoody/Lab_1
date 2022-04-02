@@ -31,6 +31,9 @@ public class TaskServiceImpl implements TaskService{
     private final ContactRepo contactRepo;
     private final PersonRepo personRepo;
 
+    /*
+    * This method is used to add contact by contact dto to task
+    * */
     @Override
     public void addContact(Task task,ContactDTO dto){
         log.info("user {} add contact to task id={} by dto contactInfo: {}", task.getPerson().getLogin(),task.getId(), dto.toString());
@@ -45,12 +48,17 @@ public class TaskServiceImpl implements TaskService{
         task.getContacts().add(contact);
     }
 
+    /*
+     * This method is used to add remove by id (actually task is used to log info)
+     * */
     @Override
     public void removeContact(Task task, Long contactId) {
         log.info("user {} remove contact id={} from task id={}", task.getPerson().getLogin(),contactId, task.getId());
         contactRepo.deleteById(contactId);
     }
-
+    /*
+    * This method is used to update task data by task dto (dto in this case must have task id)
+    * */
     @Override
     public void updateTask(TaskDTO task) {
         log.info("user id={} update task id={}", task.getPersonId(), task.getId());
@@ -75,6 +83,9 @@ public class TaskServiceImpl implements TaskService{
         }
     }
 
+    /*
+    * This method is used to get task with all contacts (eager, lazy by default)
+    * */
     @Override
     public Task getTaskWithContacts(Long id){
         log.info("fetch task id={} with contacts", id);
@@ -84,7 +95,9 @@ public class TaskServiceImpl implements TaskService{
     public void removeTaskById(Long id){
         taskRepo.deleteById(id);
     }
-
+    /*
+    * This method is used to et task dto by task id
+    * */
     @Override
     public TaskDTO getDTOByTaskById(Long taskId) {
         Collection<ContactDTO> contactDTOS=new ArrayList<>();
@@ -101,7 +114,9 @@ public class TaskServiceImpl implements TaskService{
                 .build();
         return t;
     }
-
+    /*
+    * This method is used to make task complete (by quartz scheduler)
+    * */
     public boolean makeComplete(Long id){
         Task task=taskRepo.getById(id);
         task.setComplete(true);

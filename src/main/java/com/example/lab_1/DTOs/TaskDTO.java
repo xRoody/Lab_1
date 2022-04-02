@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
-
+/*
+ * This class contain all task usefully information (DTO)
+ * */
 @Builder
 @Data
 @NoArgsConstructor

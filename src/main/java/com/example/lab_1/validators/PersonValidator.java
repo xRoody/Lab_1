@@ -15,6 +15,9 @@ import org.springframework.validation.FieldError;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+ * This class - custom person validator
+ * */
 @Component
 @RequiredArgsConstructor
 public class PersonValidator {
@@ -25,6 +28,11 @@ public class PersonValidator {
     private static final Pattern usernamePattern = Pattern.compile("[a-zA-Z\\d]*([#@!$%^_]|[a-zA-Z0-9])[a-zA-Z\\d]");
     private static final Pattern emailPattern = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)])");
 
+    /*
+     * This method is used to validate registration data
+     * @param result - result set to add field errors
+     * @param personDTO - person dto from registration page
+     * */
     public void validateRegistration(BindingResult result, PersonDTO personDTO) {
         //login validation
         if (validateString(personDTO.getLogin(), "login", 20, 3, loginPattern, result))
@@ -41,6 +49,11 @@ public class PersonValidator {
         //Try to register user
     }
 
+    /*
+     * This method is used to validate person update data
+     * @param result - result set to add field errors
+     * @param personDTO - person dto from registration page
+     * */
     public void validateUpdate(BindingResult result, PersonDTO personDTO) {
         Person person = personService.getById(personDTO.getId());
         if (!person.getNickName().equals(personDTO.getNickName()) && validateString(personDTO.getNickName(), "nickName", 25, 3, usernamePattern, result))
@@ -52,6 +65,9 @@ public class PersonValidator {
         validateOldPasswordToUDOperations(person.getPassword(), personDTO.getPassword(), result);
     }
 
+    /*
+     * This method is used to validate person delete data (actually right old password enough to delete)
+     * */
     public void validateDelete(BindingResult result, PersonDTO personDTO) {
         Person person = personService.getById(personDTO.getId());
         validateOldPasswordToUDOperations(person.getPassword(), personDTO.getPassword(), result);
@@ -64,13 +80,21 @@ public class PersonValidator {
         }
     }
 
+    /*
+     * This method is used to validate strings
+     * @param str - validated string
+     * @param max - max length of string
+     * @param min - min length of string
+     * @param patter - right form pattern for this string
+     * @param result - result set to add field errors
+     * */
     private boolean validateString(String str, String name, int max, int min, Pattern pattern, BindingResult result) {
         boolean f = true;
         if (str == null) {
             result.addError(new FieldError("personDTO", name, "Please enter your " + name));
             f = false;
         } else if (str.length() <= min) {
-            result.addError(new FieldError("personDTO", name, str, true, null, null,  name + " must be over 3"));
+            result.addError(new FieldError("personDTO", name, str, true, null, null, name + " must be over 3"));
             f = false;
         } else if (str.length() >= max) {
             result.addError(new FieldError("personDTO", name, str, true, null, null, name + " must be less then 20"));
@@ -92,6 +116,11 @@ public class PersonValidator {
             result.addError(new FieldError("personDTO", "r_password", "Password are not the same"));
     }
 
+    /*
+     * This method is used to validate email
+     * @param email - validated email
+     * @param result - result set to add field errors
+     * */
     private boolean emailValidation(String email, BindingResult result) {
         boolean f = true;
         if (email == null) {
@@ -100,34 +129,49 @@ public class PersonValidator {
         } else {
             Matcher matcher = emailPattern.matcher(email);
             if (!matcher.matches()) {
-                result.addError(new FieldError("personDTO", "email",email, true, null, null, "Please enter correct email"));
+                result.addError(new FieldError("personDTO", "email", email, true, null, null, "Please enter correct email"));
                 f = false;
             }
         }
         return f;
     }
 
+    /*
+     * This method is used to check email (must be unique)
+     * @param email - validated email
+     * @param result - result set to add field errors
+     * */
     private void validateUniqueEmail(String email, BindingResult result) {
         try {
             personService.validateEmail(email);
         } catch (UniqueEmailException e) {
-            result.addError(new FieldError("personDTO", "email",email, true, null, null, e.getMessage()));
+            result.addError(new FieldError("personDTO", "email", email, true, null, null, e.getMessage()));
         }
     }
 
+    /*
+     * This method is used to check login (must be unique)
+     * @param login - validated login
+     * @param result - result set to add field errors
+     * */
     private void validateUniqueLogin(String login, BindingResult result) {
         try {
             personService.validateLogin(login);
         } catch (UniqueLoginException e) {
-            result.addError(new FieldError("personDTO", "login",login, true, null, null, e.getMessage()));
+            result.addError(new FieldError("personDTO", "login", login, true, null, null, e.getMessage()));
         }
     }
 
+    /*
+     * This method is used to check username (must be unique)
+     * @param username - validated username
+     * @param result - result set to add field errors
+     * */
     private void validateUniqueUsername(String username, BindingResult result) {
         try {
             personService.validateUsername(username);
         } catch (UniqueNickNameException e) {
-            result.addError(new FieldError("personDTO", "nickName",username, true, null, null, e.getMessage()));
+            result.addError(new FieldError("personDTO", "nickName", username, true, null, null, e.getMessage()));
         }
     }
 }
