@@ -29,7 +29,7 @@ public class ContactServiceImpl implements ContactService{
         repo.save(contact);
     }
     /*
-     * This method is used to delete contact bu id
+     * This method is used to delete contact by id
      * @param id - contact id
      * */
     public void removeById(Long id){

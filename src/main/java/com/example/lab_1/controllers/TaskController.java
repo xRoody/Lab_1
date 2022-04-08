@@ -28,8 +28,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /*
-* This class is task controller
-* */
+ * This class is task controller
+ * */
 
 @Controller
 @RequiredArgsConstructor
@@ -51,6 +51,7 @@ public class TaskController {
      * quartzService is used to interact with quartz
      * */
     private final QuartzService quartzService;
+
     /*
      * This method is used to avoid empty strings (like "" or "    ") or meaningless whitespaces
      * */
@@ -59,10 +60,11 @@ public class TaskController {
         StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
         binder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
+
     /*
-    * This method is used to delete tasks
-    * @param id - task id to find right task to delete
-    * */
+     * This method is used to delete tasks
+     * @param id - task id to find right task to delete
+     * */
     @DeleteMapping("/tasks/{id}")
     public String deleteTask(@PathVariable("id") Long id) {
         taskService.removeTaskById(id);
@@ -73,12 +75,13 @@ public class TaskController {
         }
         return "redirect:/";
     }
+
     /*
-    * This method is used to get task page with task details
-    * @param id - task id to find right task to display
-    * @param principal - authorized user
-    * @param model - instance of Model class (used to add model attributes)
-    * */
+     * This method is used to get task page with task details
+     * @param id - task id to find right task to display
+     * @param principal - authorized user
+     * @param model - instance of Model class (used to add model attributes)
+     * */
     @GetMapping("/tasks/{id}")
     public String getTaskInfo(@PathVariable("id") Long id, Model model, Principal principal) {
         TaskDTO taskDTO = taskService.getDTOByTaskById(id);
@@ -123,11 +126,11 @@ public class TaskController {
     }
 
     /*
-    * This method used to change task contacts
-    * @param model - instance of Model class (used to add model attributes)
-    * @param taskDTO - task data transfer object with contacts
-    * @param result - instance of BindingResult class to add validation fields errors
-    * */
+     * This method used to change task contacts
+     * @param model - instance of Model class (used to add model attributes)
+     * @param taskDTO - task data transfer object with contacts
+     * @param result - instance of BindingResult class to add validation fields errors
+     * */
     @PatchMapping("/tasks/addContact")
     public String updateTaskInfoContact(Model model, @ModelAttribute("task") TaskDTO taskDTO, BindingResult result) {
         taskValidator.validateNewContact(result, taskDTO.getNewContact());
@@ -139,6 +142,7 @@ public class TaskController {
         }
         return "CurTaskDemoPage";
     }
+
     /*
      * This method used to delete task contacts
      * @param model - instance of Model class (used to add model attributes)
@@ -154,12 +158,13 @@ public class TaskController {
         addPersonDetails(person, model);
         return "CurTaskDemoPage";
     }
+
     /*
-    * This method is used to get page to add new task
-    * @param personId - person id to add task
-    * @param principal - authorized user
-    * @param model - instance of Model class (used to add model attributes)
-    * */
+     * This method is used to get page to add new task
+     * @param personId - person id to add task
+     * @param principal - authorized user
+     * @param model - instance of Model class (used to add model attributes)
+     * */
     @GetMapping("/tasks/add/{id}")
     public String addNewTask(@PathVariable("id") Long personId, Model model, Principal principal) {
         if (!Objects.equals(personService.getPerson(principal.getName()).getId(), personId)) return "redirect:/";
@@ -173,11 +178,11 @@ public class TaskController {
     }
 
     /*
-    * This method is used to add new task
-    * @param taskDTO - task data transfer object
-    * @param model - instance of Model class (used to add model attributes)
-    * @param result - instance of BindingResult class to add validation fields errors
-    * */
+     * This method is used to add new task
+     * @param taskDTO - task data transfer object
+     * @param model - instance of Model class (used to add model attributes)
+     * @param result - instance of BindingResult class to add validation fields errors
+     * */
     @PostMapping("/tasks/add")
     public String addTaskToPerson(@ModelAttribute("task") TaskDTO taskDTO, BindingResult result, Model model) {
         taskValidator.validateTask(result, taskDTO);
@@ -200,6 +205,7 @@ public class TaskController {
             return "TaskAddPage";
         }
     }
+
     /*
      * This method used to add task contacts
      * @param model - instance of Model class (used to add model attributes)
@@ -218,6 +224,7 @@ public class TaskController {
         addPersonDetails(person, model);
         return "TaskAddPage";
     }
+
     /*
      * This method used to delete task contacts
      * @param model - instance of Model class (used to add model attributes)
@@ -233,8 +240,8 @@ public class TaskController {
     }
 
     /*
-    * This method is used to add regular (like "person nick name", "person id" and "person email") data to page header
-    * */
+     * This method is used to add regular (like "person nick name", "person id" and "person email") data to page header
+     * */
     private void addPersonDetails(Person person, Model model) {
         model.addAttribute("nick", person.getNickName());
         model.addAttribute("persId", person.getId());
@@ -242,8 +249,8 @@ public class TaskController {
     }
 
     /*
-    * This method is used to add contact to DTO set (actually list in TaskDTO). If set is null create new, else add to set
-    * */
+     * This method is used to add contact to DTO set (actually list in TaskDTO). If set is null create new, else add to set
+     * */
     private void addContactToTaskDTOSet(ContactDTO contactDTO, TaskDTO taskDTO) {
         if (taskDTO.getContactDTOSet() == null) {
             List<ContactDTO> list = new ArrayList<>();

@@ -1,5 +1,150 @@
-2022-03-31 00:00:51.868  INFO 20284 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648669778269 paused.
-2022-03-31 00:00:51.869  WARN 20284 --- [QuartzScheduler_spring-boot-quartz-DESKTOP-879MLQI1648669778269_ClusterManager] o.s.s.quartz.LocalDataSourceJobStore     : Failed to override connection auto commit/transaction isolation.
+2022-04-05 00:19:21.366  INFO 3180 --- [main] com.example.lab_1.Lab1Application        : Starting Lab1Application using Java 17.0.1 on DESKTOP-879MLQI with PID 3180 (E:\UltProjects\alCourse-1\Lab_1\target\classes started by Администратор in E:\UltProjects\alCourse-1\Lab_1)
+2022-04-05 00:19:21.373  INFO 3180 --- [main] com.example.lab_1.Lab1Application        : No active profile set, falling back to default profiles: default
+2022-04-05 00:19:22.842  INFO 3180 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-04-05 00:19:22.926  INFO 3180 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 4 JPA repository interfaces.
+2022-04-05 00:19:23.476  INFO 3180 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-05 00:19:23.485  INFO 3180 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-05 00:19:23.486  INFO 3180 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-04-05 00:19:23.593  INFO 3180 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-05 00:19:23.593  INFO 3180 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2170 ms
+2022-04-05 00:19:23.618  INFO 3180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-04-05 00:19:23.781  INFO 3180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-04-05 00:19:23.789  INFO 3180 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:./src/main/resources/data_h2/db'
+2022-04-05 00:19:23.888  INFO 3180 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-04-05 00:19:23.946  INFO 3180 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-04-05 00:19:24.087  INFO 3180 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-04-05 00:19:24.234  INFO 3180 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-04-05 00:19:25.150  INFO 3180 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-04-05 00:19:25.159  INFO 3180 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-04-05 00:19:25.721  WARN 3180 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-04-05 00:19:25.810  INFO 3180 --- [main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2022-04-05 00:19:25.820  INFO 3180 --- [main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-04-05 00:19:25.820  INFO 3180 --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2022-04-05 00:19:25.822  INFO 3180 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : Using db table-based data access locking (synchronization).
+2022-04-05 00:19:25.823  INFO 3180 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : JobStoreCMT initialized.
+2022-04-05 00:19:25.824  INFO 3180 --- [main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'spring-boot-quartz' with instanceId 'DESKTOP-879MLQI1649103565811'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 25 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+2022-04-05 00:19:25.824  INFO 3180 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'spring-boot-quartz' initialized from an externally provided properties instance.
+2022-04-05 00:19:25.824  INFO 3180 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2022-04-05 00:19:25.824  INFO 3180 --- [main] org.quartz.core.QuartzScheduler          : JobFactory set to: com.example.lab_1.configs.SchedulerJobFactory@96dfcbb
+2022-04-05 00:19:25.947  INFO 3180 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/**/*.css'] with []
+2022-04-05 00:19:25.977  INFO 3180 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@bf18412, org.springframework.security.web.context.SecurityContextPersistenceFilter@61503d00, org.springframework.security.web.header.HeaderWriterFilter@6be2b567, org.springframework.security.web.csrf.CsrfFilter@70ad0854, org.springframework.security.web.authentication.logout.LogoutFilter@747e8659, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2fc435e9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3ebc6d8b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b80b41d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5da2966, org.springframework.security.web.session.SessionManagementFilter@7fcbc336, org.springframework.security.web.access.ExceptionTranslationFilter@7512a9a6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@35d3202b]
+2022-04-05 00:19:26.355  INFO 3180 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-05 00:19:26.356  INFO 3180 --- [main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2022-04-05 00:19:26.366  INFO 3180 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: detected 1 failed or restarted instances.
+2022-04-05 00:19:26.366  INFO 3180 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: Scanning for instance "DESKTOP-879MLQI1648998177071"'s failed in-progress jobs.
+2022-04-05 00:19:26.368  INFO 3180 --- [main] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1649103565811 started.
+2022-04-05 00:19:26.378  INFO 3180 --- [main] com.example.lab_1.Lab1Application        : Started Lab1Application in 5.467 seconds (JVM running for 6.324)
+2022-04-05 00:19:38.083  INFO 3180 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-05 00:19:38.084  INFO 3180 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-05 00:19:38.085  INFO 3180 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-05 00:19:41.122  INFO 3180 --- [http-nio-8080-exec-10] c.e.lab_1.service.PersonServiceImpl      : try to find user xRoody by security system
+2022-04-05 00:19:59.982  INFO 3180 --- [http-nio-8080-exec-9] c.e.lab_1.service.QuartzServiceImpl      : Job has been updated true
+2022-04-05 00:19:59.983  INFO 3180 --- [http-nio-8080-exec-9] c.e.lab_1.service.QuartzServiceImpl      : Complete job has been updated true
+2022-04-05 00:19:59.988  INFO 3180 --- [http-nio-8080-exec-9] c.e.lab_1.service.QuartzServiceImpl      : Job has been removed false
+2022-04-05 00:19:59.991  INFO 3180 --- [http-nio-8080-exec-9] c.e.lab_1.service.QuartzServiceImpl      : Job has been added true
+2022-04-05 00:20:00.000  INFO 3180 --- [http-nio-8080-exec-9] c.example.lab_1.service.TaskServiceImpl  : user id=1 update task id=11
+2022-04-05 00:20:00.001  INFO 3180 --- [http-nio-8080-exec-9] c.example.lab_1.service.TaskServiceImpl  : user xRoody remove contact id=25 from task id=11
+2022-04-05 00:20:00.010  INFO 3180 --- [http-nio-8080-exec-9] c.example.lab_1.service.TaskServiceImpl  : user xRoody add contact to task id=11 by dto contactInfo: ContactDTO(id=null, email=sasha_ermak_2002@mail.ru)
+2022-04-05 00:21:00.010  INFO 3180 --- [spring-boot-quartz_Worker-1] com.example.lab_1.jobs.TaskJob           : Job ** 11:Task starting in Tue Apr 05 00:21:00 GMT+04:00 2022
+2022-04-05 00:21:11.409  INFO 3180 --- [spring-boot-quartz_Worker-1] c.example.lab_1.service.MailServiceImpl  : request for sasha_ermak_2002@mail.ru has been sent
+2022-04-05 00:21:33.125  INFO 3180 --- [http-nio-8080-exec-7] c.e.lab_1.service.QuartzServiceImpl      : Job has been updated true
+2022-04-05 00:21:33.126  INFO 3180 --- [http-nio-8080-exec-7] c.e.lab_1.service.QuartzServiceImpl      : Complete job has been updated true
+2022-04-05 00:21:33.127  INFO 3180 --- [http-nio-8080-exec-7] c.e.lab_1.service.QuartzServiceImpl      : Job has been removed false
+2022-04-05 00:21:33.128  INFO 3180 --- [http-nio-8080-exec-7] c.e.lab_1.service.QuartzServiceImpl      : Job has been added true
+2022-04-05 00:21:33.130  INFO 3180 --- [http-nio-8080-exec-7] c.example.lab_1.service.TaskServiceImpl  : user id=1 update task id=11
+2022-04-05 00:21:33.130  INFO 3180 --- [http-nio-8080-exec-7] c.example.lab_1.service.TaskServiceImpl  : user xRoody remove contact id=27 from task id=11
+2022-04-05 00:21:33.130  INFO 3180 --- [http-nio-8080-exec-7] c.example.lab_1.service.TaskServiceImpl  : user xRoody add contact to task id=11 by dto contactInfo: ContactDTO(id=null, email=sasha_ermak_2002@mail.ru)
+2022-04-05 00:22:00.004  INFO 3180 --- [spring-boot-quartz_Worker-2] com.example.lab_1.jobs.TaskJob           : Job ** 11:Task starting in Tue Apr 05 00:22:00 GMT+04:00 2022
+2022-04-05 00:22:10.675  INFO 3180 --- [spring-boot-quartz_Worker-2] c.example.lab_1.service.MailServiceImpl  : request for sasha_ermak_2002@mail.ru has been sent
+2022-04-05 00:22:45.338  INFO 3180 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1649103565811 paused.
+2022-04-05 00:22:45.354  INFO 3180 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1649103565811 shutting down.
+2022-04-05 00:22:45.354  INFO 3180 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1649103565811 paused.
+2022-04-05 00:22:45.355  INFO 3180 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1649103565811 shutdown complete.
+2022-04-05 00:22:45.355  INFO 3180 --- [SpringApplicationShutdownHook] c.e.lab_1.service.QuartzServiceImpl      : Service destroying complete
+2022-04-05 00:22:45.355  INFO 3180 --- [SpringApplicationShutdownHook] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2022-04-05 00:22:45.356  INFO 3180 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-04-05 00:22:45.358  INFO 3180 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-04-05 00:22:45.359  INFO 3180 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-04-05 15:15:51.512  INFO 6132 --- [main] com.example.lab_1.Lab1Application        : Starting Lab1Application using Java 17.0.1 on DESKTOP-879MLQI with PID 6132 (E:\UltProjects\alCourse-1\Lab_1\target\classes started by Администратор in E:\UltProjects\alCourse-1\Lab_1)
+2022-04-05 15:15:51.514  INFO 6132 --- [main] com.example.lab_1.Lab1Application        : No active profile set, falling back to default profiles: default
+2022-04-05 15:15:52.585  INFO 6132 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-04-05 15:15:52.660  INFO 6132 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 4 JPA repository interfaces.
+2022-04-05 15:15:53.158  INFO 6132 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-05 15:15:53.166  INFO 6132 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-05 15:15:53.166  INFO 6132 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-04-05 15:15:53.258  INFO 6132 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-05 15:15:53.258  INFO 6132 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1707 ms
+2022-04-05 15:15:53.281  INFO 6132 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-04-05 15:15:53.418  INFO 6132 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-04-05 15:15:53.427  INFO 6132 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:./src/main/resources/data_h2/db'
+2022-04-05 15:15:53.514  INFO 6132 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-04-05 15:15:53.561  INFO 6132 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-04-05 15:15:53.754  INFO 6132 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-04-05 15:15:53.840  INFO 6132 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-04-05 15:15:54.428  INFO 6132 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-04-05 15:15:54.434  INFO 6132 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-04-05 15:15:54.870  WARN 6132 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-04-05 15:15:54.953  INFO 6132 --- [main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2022-04-05 15:15:54.962  INFO 6132 --- [main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-04-05 15:15:54.962  INFO 6132 --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2022-04-05 15:15:54.964  INFO 6132 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : Using db table-based data access locking (synchronization).
+2022-04-05 15:15:54.965  INFO 6132 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : JobStoreCMT initialized.
+2022-04-05 15:15:54.966  INFO 6132 --- [main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'spring-boot-quartz' with instanceId 'DESKTOP-879MLQI1649157354954'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 25 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+2022-04-05 15:15:54.966  INFO 6132 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'spring-boot-quartz' initialized from an externally provided properties instance.
+2022-04-05 15:15:54.966  INFO 6132 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2022-04-05 15:15:54.966  INFO 6132 --- [main] org.quartz.core.QuartzScheduler          : JobFactory set to: com.example.lab_1.configs.SchedulerJobFactory@19677add
+2022-04-05 15:15:55.076  INFO 6132 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/**/*.css'] with []
+2022-04-05 15:15:55.100  INFO 6132 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@73fe7483, org.springframework.security.web.context.SecurityContextPersistenceFilter@393e7546, org.springframework.security.web.header.HeaderWriterFilter@19540247, org.springframework.security.web.csrf.CsrfFilter@642614b7, org.springframework.security.web.authentication.logout.LogoutFilter@197180a5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@29d563bd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@37cc6017, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@169d1f92, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@11577ab8, org.springframework.security.web.session.SessionManagementFilter@1c681761, org.springframework.security.web.access.ExceptionTranslationFilter@1774c4e2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@13b4ee4e]
+2022-04-05 15:15:55.437  INFO 6132 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-05 15:15:55.439  INFO 6132 --- [main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2022-04-05 15:15:55.449  INFO 6132 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: detected 1 failed or restarted instances.
+2022-04-05 15:15:55.449  INFO 6132 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: Scanning for instance "DESKTOP-879MLQI1649103565811"'s failed in-progress jobs.
+2022-04-05 15:15:55.452  INFO 6132 --- [main] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1649157354954 started.
+2022-04-05 15:15:55.462  INFO 6132 --- [main] com.example.lab_1.Lab1Application        : Started Lab1Application in 4.322 seconds (JVM running for 5.099)
+2022-04-05 15:16:06.820  INFO 6132 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-05 15:16:06.821  INFO 6132 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-05 15:16:06.822  INFO 6132 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-05 15:16:20.986  INFO 6132 --- [http-nio-8080-exec-6] c.e.lab_1.service.PersonServiceImpl      : try to find user xRoody by security system
+2022-04-05 15:16:21.273 ERROR 6132 --- [http-nio-8080-exec-3] c.e.l.controllers.CustomErrorController  : Server error 404
+2022-04-05 15:17:26.444  INFO 6132 --- [http-nio-8080-exec-2] c.e.lab_1.service.QuartzServiceImpl      : Job has been updated true
+2022-04-05 15:17:26.444  INFO 6132 --- [http-nio-8080-exec-2] c.e.lab_1.service.QuartzServiceImpl      : Complete job has been updated true
+2022-04-05 15:17:26.449  INFO 6132 --- [http-nio-8080-exec-2] c.e.lab_1.service.QuartzServiceImpl      : Job has been removed false
+2022-04-05 15:17:26.452  INFO 6132 --- [http-nio-8080-exec-2] c.e.lab_1.service.QuartzServiceImpl      : Job has been added true
+2022-04-05 15:17:26.462  INFO 6132 --- [http-nio-8080-exec-2] c.example.lab_1.service.TaskServiceImpl  : user id=1 update task id=10
+2022-04-05 15:17:26.463  INFO 6132 --- [http-nio-8080-exec-2] c.example.lab_1.service.TaskServiceImpl  : user xRoody remove contact id=24 from task id=10
+2022-04-05 15:17:26.471  INFO 6132 --- [http-nio-8080-exec-2] c.example.lab_1.service.TaskServiceImpl  : user xRoody add contact to task id=10 by dto contactInfo: ContactDTO(id=null, email=sasha_ermak_2002@mail.ru)
+2022-04-05 15:18:00.005  INFO 6132 --- [spring-boot-quartz_Worker-1] com.example.lab_1.jobs.TaskJob           : Job ** 10:Task starting in Tue Apr 05 15:18:00 GMT+04:00 2022
+2022-04-05 15:18:11.935  INFO 6132 --- [spring-boot-quartz_Worker-1] c.example.lab_1.service.MailServiceImpl  : request for sasha_ermak_2002@mail.ru has been sent
+2022-04-05 15:18:33.461  INFO 6132 --- [http-nio-8080-exec-1] c.e.lab_1.service.PersonServiceImpl      : try to find user xRoody by security system
+2022-04-05 15:19:25.310  INFO 6132 --- [http-nio-8080-exec-5] c.e.lab_1.service.QuartzServiceImpl      : Job has been updated true
+2022-04-05 15:19:25.311  INFO 6132 --- [http-nio-8080-exec-5] c.e.lab_1.service.QuartzServiceImpl      : Complete job has been updated true
+2022-04-05 15:19:25.312  INFO 6132 --- [http-nio-8080-exec-5] c.e.lab_1.service.QuartzServiceImpl      : Job has been removed false
+2022-04-05 15:19:25.313  INFO 6132 --- [http-nio-8080-exec-5] c.e.lab_1.service.QuartzServiceImpl      : Job has been added true
+2022-04-05 15:19:25.317  INFO 6132 --- [http-nio-8080-exec-5] c.example.lab_1.service.TaskServiceImpl  : user id=1 update task id=11
+2022-04-05 15:19:25.318  INFO 6132 --- [http-nio-8080-exec-5] c.example.lab_1.service.TaskServiceImpl  : user xRoody remove contact id=28 from task id=11
+2022-04-05 15:19:25.318  INFO 6132 --- [http-nio-8080-exec-5] c.example.lab_1.service.TaskServiceImpl  : user xRoody add contact to task id=11 by dto contactInfo: ContactDTO(id=null, email=sasha_ermak_2002@mail.ru)
+2022-04-05 15:19:25.318  INFO 6132 --- [http-nio-8080-exec-5] c.example.lab_1.service.TaskServiceImpl  : user xRoody add contact to task id=11 by dto contactInfo: ContactDTO(id=null, email=strataray@mail.ru)
+2022-04-05 15:20:00.001  INFO 6132 --- [spring-boot-quartz_Worker-2] com.example.lab_1.jobs.TaskJob           : Job ** 11:Task starting in Tue Apr 05 15:20:00 GMT+04:00 2022
+2022-04-05 15:20:10.590  INFO 6132 --- [spring-boot-quartz_Worker-2] c.example.lab_1.service.MailServiceImpl  : request for sasha_ermak_2002@mail.ru has been sent
+2022-04-05 15:20:21.192  INFO 6132 --- [spring-boot-quartz_Worker-2] c.example.lab_1.service.MailServiceImpl  : request for strataray@mail.ru has been sent
+2022-04-05 15:50:09.920  INFO 6132 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1649157354954 paused.
+2022-04-05 15:50:09.937  INFO 6132 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1649157354954 shutting down.
+2022-04-05 15:50:09.937  INFO 6132 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1649157354954 paused.
+2022-04-05 15:50:09.937  WARN 6132 --- [QuartzScheduler_spring-boot-quartz-DESKTOP-879MLQI1649157354954_ClusterManager] o.s.s.quartz.LocalDataSourceJobStore     : Failed to override connection auto commit/transaction isolation.
 
 org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
@@ -20,7 +165,7 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.quartz.impl.jdbcjobstore.JobStoreSupport$ClusterManager.manage(JobStoreSupport.java:3935) ~[quartz-2.3.2.jar:na]
 	at org.quartz.impl.jdbcjobstore.JobStoreSupport$ClusterManager.run(JobStoreSupport.java:3972) ~[quartz-2.3.2.jar:na]
 
-2022-03-31 00:00:51.884 ERROR 20284 --- [QuartzScheduler_spring-boot-quartz-DESKTOP-879MLQI1648669778269_ClusterManager] o.s.s.quartz.LocalDataSourceJobStore     : Couldn't rollback jdbc connection. База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+2022-04-05 15:50:09.939 ERROR 6132 --- [QuartzScheduler_spring-boot-quartz-DESKTOP-879MLQI1649157354954_ClusterManager] o.s.s.quartz.LocalDataSourceJobStore     : Couldn't rollback jdbc connection. База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
 
 org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
@@ -46,7 +191,7 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.quartz.impl.jdbcjobstore.JobStoreSupport$ClusterManager.manage(JobStoreSupport.java:3935) ~[quartz-2.3.2.jar:na]
 	at org.quartz.impl.jdbcjobstore.JobStoreSupport$ClusterManager.run(JobStoreSupport.java:3972) ~[quartz-2.3.2.jar:na]
 
-2022-03-31 00:00:51.886 ERROR 20284 --- [QuartzScheduler_spring-boot-quartz-DESKTOP-879MLQI1648669778269_ClusterManager] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: Error managing cluster: Failure identifying failed instances when checking-in: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+2022-04-05 15:50:09.941 ERROR 6132 --- [QuartzScheduler_spring-boot-quartz-DESKTOP-879MLQI1649157354954_ClusterManager] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: Error managing cluster: Failure identifying failed instances when checking-in: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
 
 org.quartz.JobPersistenceException: Failure identifying failed instances when checking-in: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
@@ -68,7 +213,7 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:350) ~[h2-1.4.200.jar:1.4.200]
 	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:337) ~[HikariCP-4.0.3.jar:na]
 	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java) ~[HikariCP-4.0.3.jar:na]
-	at jdk.internal.reflect.GeneratedMethodAccessor75.invoke(Unknown Source) ~[na:na]
+	at jdk.internal.reflect.GeneratedMethodAccessor72.invoke(Unknown Source) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
 	at org.quartz.impl.jdbcjobstore.AttributeRestoringConnectionInvocationHandler.invoke(AttributeRestoringConnectionInvocationHandler.java:73) ~[quartz-2.3.2.jar:na]
@@ -77,128 +222,9 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.quartz.impl.jdbcjobstore.JobStoreSupport.findFailedInstances(JobStoreSupport.java:3384) ~[quartz-2.3.2.jar:na]
 	... 4 common frames omitted
 
-2022-03-31 00:00:51.898  INFO 20284 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648669778269 shutting down.
-2022-03-31 00:00:51.898  INFO 20284 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648669778269 paused.
-2022-03-31 00:00:51.898  INFO 20284 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648669778269 shutdown complete.
-2022-03-31 00:00:51.899  INFO 20284 --- [SpringApplicationShutdownHook] c.e.lab_1.service.QuartzServiceImpl      : Service destroying complete
-2022-03-31 00:00:51.899  INFO 20284 --- [SpringApplicationShutdownHook] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
-2022-03-31 00:00:51.900  INFO 20284 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-31 00:00:51.902  INFO 20284 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-03-31 00:00:51.903  INFO 20284 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-03-31 00:01:09.212  INFO 21148 --- [main] com.example.lab_1.Lab1Application        : Starting Lab1Application using Java 17.0.1 on DESKTOP-879MLQI with PID 21148 (E:\UltProjects\alCourse-1\Lab_1\target\classes started by Администратор in E:\UltProjects\alCourse-1\Lab_1)
-2022-03-31 00:01:09.214  INFO 21148 --- [main] com.example.lab_1.Lab1Application        : No active profile set, falling back to default profiles: default
-2022-03-31 00:01:09.708  INFO 21148 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-31 00:01:09.764  INFO 21148 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 4 JPA repository interfaces.
-2022-03-31 00:01:10.143  INFO 21148 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-31 00:01:10.150  INFO 21148 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-31 00:01:10.150  INFO 21148 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
-2022-03-31 00:01:10.249  INFO 21148 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-03-31 00:01:10.249  INFO 21148 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1007 ms
-2022-03-31 00:01:10.274  INFO 21148 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-03-31 00:01:10.371  INFO 21148 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-03-31 00:01:10.378  INFO 21148 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:./src/main/resources/data_h2/db'
-2022-03-31 00:01:10.448  INFO 21148 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-31 00:01:10.477  INFO 21148 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
-2022-03-31 00:01:10.556  INFO 21148 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-03-31 00:01:10.621  INFO 21148 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2022-03-31 00:01:11.081  INFO 21148 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-31 00:01:11.088  INFO 21148 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-31 00:01:11.479  WARN 21148 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-31 00:01:11.549  INFO 21148 --- [main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
-2022-03-31 00:01:11.556  INFO 21148 --- [main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
-2022-03-31 00:01:11.556  INFO 21148 --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
-2022-03-31 00:01:11.558  INFO 21148 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : Using db table-based data access locking (synchronization).
-2022-03-31 00:01:11.559  INFO 21148 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : JobStoreCMT initialized.
-2022-03-31 00:01:11.559  INFO 21148 --- [main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'spring-boot-quartz' with instanceId 'DESKTOP-879MLQI1648670471549'
-  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
-  NOT STARTED.
-  Currently in standby mode.
-  Number of jobs executed: 0
-  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 25 threads.
-  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
-
-2022-03-31 00:01:11.560  INFO 21148 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'spring-boot-quartz' initialized from an externally provided properties instance.
-2022-03-31 00:01:11.560  INFO 21148 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
-2022-03-31 00:01:11.560  INFO 21148 --- [main] org.quartz.core.QuartzScheduler          : JobFactory set to: com.example.lab_1.configs.SchedulerJobFactory@5b0575d0
-2022-03-31 00:01:11.563  INFO 21148 --- [main] c.e.lab_1.service.QuartzServiceImpl      : Service initialization complete
-2022-03-31 00:01:11.642  INFO 21148 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/**/*.css'] with []
-2022-03-31 00:01:11.662  INFO 21148 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5703c1fb, org.springframework.security.web.context.SecurityContextPersistenceFilter@5737d116, org.springframework.security.web.header.HeaderWriterFilter@37cc6017, org.springframework.security.web.csrf.CsrfFilter@1bfafce1, org.springframework.security.web.authentication.logout.LogoutFilter@32a074ed, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5759edff, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6be2b567, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1eab0700, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d2be319, org.springframework.security.web.session.SessionManagementFilter@7512a9a6, org.springframework.security.web.access.ExceptionTranslationFilter@1c681761, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4ba1f425]
-2022-03-31 00:01:11.939  INFO 21148 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-03-31 00:01:11.940  INFO 21148 --- [main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
-2022-03-31 00:01:11.949  INFO 21148 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: detected 1 failed or restarted instances.
-2022-03-31 00:01:11.949  INFO 21148 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: Scanning for instance "DESKTOP-879MLQI1648669778269"'s failed in-progress jobs.
-2022-03-31 00:01:11.951  INFO 21148 --- [main] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648670471549 started.
-2022-03-31 00:01:11.959  INFO 21148 --- [main] com.example.lab_1.Lab1Application        : Started Lab1Application in 3.023 seconds (JVM running for 3.642)
-2022-03-31 00:01:17.887  INFO 21148 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-31 00:01:17.887  INFO 21148 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-31 00:01:17.888  INFO 21148 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-03-31 00:01:45.404  INFO 21148 --- [http-nio-8080-exec-3] c.e.lab_1.service.PersonServiceImpl      : try to find user xRoody by security system
-2022-03-31 00:03:29.305  INFO 21148 --- [http-nio-8080-exec-2] c.e.lab_1.service.PersonServiceImpl      : add task to person id= 1 by dto, with data: TaskDTO(id=1, name=Test, description=null, eventTime=2022-04-01T00:03, contactDTOSet=[ContactDTO(id=null, email=sasha_ermak_2002@mail.ru)], newContact=null, personId=1, isComplete=false)
-2022-03-31 00:03:29.322  INFO 21148 --- [http-nio-8080-exec-2] c.example.lab_1.service.TaskServiceImpl  : user xRoody add contact to task id=null by dto contactInfo: ContactDTO(id=null, email=sasha_ermak_2002@mail.ru)
-2022-03-31 00:03:29.345  INFO 21148 --- [http-nio-8080-exec-2] c.e.lab_1.service.QuartzServiceImpl      : Job has been added true
-2022-03-31 00:05:22.574  INFO 21148 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648670471549 paused.
-2022-03-31 00:05:22.590  INFO 21148 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648670471549 shutting down.
-2022-03-31 00:05:22.590  INFO 21148 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648670471549 paused.
-2022-03-31 00:05:22.590  INFO 21148 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648670471549 shutdown complete.
-2022-03-31 00:05:22.590  INFO 21148 --- [SpringApplicationShutdownHook] c.e.lab_1.service.QuartzServiceImpl      : Service destroying complete
-2022-03-31 00:05:22.590  INFO 21148 --- [SpringApplicationShutdownHook] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
-2022-03-31 00:05:22.592  INFO 21148 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-31 00:05:22.594  INFO 21148 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-03-31 00:05:22.595  INFO 21148 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-03-31 00:05:27.956  INFO 20240 --- [main] com.example.lab_1.Lab1Application        : Starting Lab1Application using Java 17.0.1 on DESKTOP-879MLQI with PID 20240 (E:\UltProjects\alCourse-1\Lab_1\target\classes started by Администратор in E:\UltProjects\alCourse-1\Lab_1)
-2022-03-31 00:05:27.958  INFO 20240 --- [main] com.example.lab_1.Lab1Application        : No active profile set, falling back to default profiles: default
-2022-03-31 00:05:28.455  INFO 20240 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-31 00:05:28.509  INFO 20240 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 4 JPA repository interfaces.
-2022-03-31 00:05:28.892  INFO 20240 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-31 00:05:28.898  INFO 20240 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-31 00:05:28.899  INFO 20240 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
-2022-03-31 00:05:29.002  INFO 20240 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-03-31 00:05:29.002  INFO 20240 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1015 ms
-2022-03-31 00:05:29.024  INFO 20240 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-03-31 00:05:29.122  INFO 20240 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-03-31 00:05:29.129  INFO 20240 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:./src/main/resources/data_h2/db'
-2022-03-31 00:05:29.199  INFO 20240 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-31 00:05:29.227  INFO 20240 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
-2022-03-31 00:05:29.306  INFO 20240 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-03-31 00:05:29.372  INFO 20240 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2022-03-31 00:05:29.853  INFO 20240 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-31 00:05:29.860  INFO 20240 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-31 00:05:30.251  WARN 20240 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-31 00:05:30.321  INFO 20240 --- [main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
-2022-03-31 00:05:30.328  INFO 20240 --- [main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
-2022-03-31 00:05:30.328  INFO 20240 --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
-2022-03-31 00:05:30.330  INFO 20240 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : Using db table-based data access locking (synchronization).
-2022-03-31 00:05:30.331  INFO 20240 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : JobStoreCMT initialized.
-2022-03-31 00:05:30.331  INFO 20240 --- [main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'spring-boot-quartz' with instanceId 'DESKTOP-879MLQI1648670730321'
-  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
-  NOT STARTED.
-  Currently in standby mode.
-  Number of jobs executed: 0
-  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 25 threads.
-  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
-
-2022-03-31 00:05:30.332  INFO 20240 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'spring-boot-quartz' initialized from an externally provided properties instance.
-2022-03-31 00:05:30.332  INFO 20240 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
-2022-03-31 00:05:30.332  INFO 20240 --- [main] org.quartz.core.QuartzScheduler          : JobFactory set to: com.example.lab_1.configs.SchedulerJobFactory@16890f00
-2022-03-31 00:05:30.335  INFO 20240 --- [main] c.e.lab_1.service.QuartzServiceImpl      : Service initialization complete
-2022-03-31 00:05:30.412  INFO 20240 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/**/*.css'] with []
-2022-03-31 00:05:30.433  INFO 20240 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@220f6a3c, org.springframework.security.web.context.SecurityContextPersistenceFilter@1774c4e2, org.springframework.security.web.header.HeaderWriterFilter@60c8909a, org.springframework.security.web.csrf.CsrfFilter@4c24c40a, org.springframework.security.web.authentication.logout.LogoutFilter@1fa44f66, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@69c0bae6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7d8d671b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b43b101, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5eb041b5, org.springframework.security.web.session.SessionManagementFilter@76208b80, org.springframework.security.web.access.ExceptionTranslationFilter@138a952f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3fb1948c]
-2022-03-31 00:05:30.710  INFO 20240 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-03-31 00:05:30.711  INFO 20240 --- [main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
-2022-03-31 00:05:30.720  INFO 20240 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: detected 1 failed or restarted instances.
-2022-03-31 00:05:30.720  INFO 20240 --- [main] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: Scanning for instance "DESKTOP-879MLQI1648670471549"'s failed in-progress jobs.
-2022-03-31 00:05:30.722  INFO 20240 --- [main] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648670730321 started.
-2022-03-31 00:05:30.731  INFO 20240 --- [main] com.example.lab_1.Lab1Application        : Started Lab1Application in 3.051 seconds (JVM running for 3.591)
-2022-03-31 00:05:32.626  INFO 20240 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-31 00:05:32.626  INFO 20240 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-31 00:05:32.627  INFO 20240 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-03-31 00:05:36.675  INFO 20240 --- [http-nio-8080-exec-3] c.e.lab_1.service.PersonServiceImpl      : try to find user xRoody by security system
-2022-03-31 00:07:44.299  INFO 20240 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648670730321 paused.
-2022-03-31 00:07:44.314  INFO 20240 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648670730321 shutting down.
-2022-03-31 00:07:44.314  INFO 20240 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648670730321 paused.
-2022-03-31 00:07:44.314  INFO 20240 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1648670730321 shutdown complete.
-2022-03-31 00:07:44.314  INFO 20240 --- [SpringApplicationShutdownHook] c.e.lab_1.service.QuartzServiceImpl      : Service destroying complete
-2022-03-31 00:07:44.314  INFO 20240 --- [SpringApplicationShutdownHook] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
-2022-03-31 00:07:44.316  INFO 20240 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-31 00:07:44.317  INFO 20240 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-03-31 00:07:44.319  INFO 20240 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-04-05 15:50:09.941  INFO 6132 --- [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler spring-boot-quartz_$_DESKTOP-879MLQI1649157354954 shutdown complete.
+2022-04-05 15:50:09.942  INFO 6132 --- [SpringApplicationShutdownHook] c.e.lab_1.service.QuartzServiceImpl      : Service destroying complete
+2022-04-05 15:50:09.942  INFO 6132 --- [SpringApplicationShutdownHook] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2022-04-05 15:50:09.943  INFO 6132 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-04-05 15:50:09.946  INFO 6132 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-04-05 15:50:09.947  INFO 6132 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

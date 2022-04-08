@@ -59,6 +59,7 @@ public class TaskValidator {
             result.addError(new FieldError("TaskDTO", fieldName, mail, true, null, null, "Incorrect email address"));
         }
     }
+
     /*
      * This method is used to validate contact set (list)
      * @param list - validated list

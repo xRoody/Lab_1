@@ -1,5 +1,6 @@
 package com.example.lab_1;
 
+import com.example.lab_1.DTOs.PersonDTO;
 import com.example.lab_1.repositpries.TaskRepo;
 import com.example.lab_1.service.PersonService;
 import org.springframework.boot.SpringApplication;
@@ -13,5 +14,7 @@ public class Lab1Application {
         ConfigurableApplicationContext context=SpringApplication.run(Lab1Application.class, args);
         TaskRepo taskRepo=context.getBean(TaskRepo.class);
         PersonService personService=context.getBean(PersonService.class);
+        PersonDTO personDTO=personService.getDTObyId(1l);
+        System.out.println(personDTO);
     }
 }
